@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>enroute flight navigation: GeoMapProvider Class Reference</title>
+<title>Enroute Flight Navigation: GeoMapProvider Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,8 +18,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">enroute flight navigation
-   &#160;<span id="projectnumber">1.7.0</span>
+   <div id="projectname">Enroute Flight Navigation
+   &#160;<span id="projectnumber">1.8.2</span>
    </div>
    <div id="projectbrief">A navigation app for VFR pilots</div>
   </td>
@@ -84,8 +84,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a828b9afaa4360583d65f74b24002e9a8"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoMapProvider.html#a828b9afaa4360583d65f74b24002e9a8">geoJSON</a> ()</td></tr>
 <tr class="memdesc:a828b9afaa4360583d65f74b24002e9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter function for the property with the same name.  <a href="#a828b9afaa4360583d65f74b24002e9a8">More...</a><br /></td></tr>
 <tr class="separator:a828b9afaa4360583d65f74b24002e9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac45f7be4198da5b11fa9969b5d2d1761"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE QList&lt; QObject * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoMapProvider.html#ac45f7be4198da5b11fa9969b5d2d1761">nearbyAirfields</a> (const QGeoCoordinate &amp;position)</td></tr>
-<tr class="separator:ac45f7be4198da5b11fa9969b5d2d1761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf6ec5ccb7b474c43202d460ca9749b"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE QObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoMapProvider.html#afdf6ec5ccb7b474c43202d460ca9749b">findByID</a> (const QString &amp;id)</td></tr>
+<tr class="separator:afdf6ec5ccb7b474c43202d460ca9749b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54d22d70f030df426b398091a851297"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE QList&lt; QObject * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoMapProvider.html#af54d22d70f030df426b398091a851297">nearbyWaypoints</a> (const QGeoCoordinate &amp;position, const QString &amp;type)</td></tr>
+<tr class="separator:af54d22d70f030df426b398091a851297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaca2eace29b6dc261c32a4eb09fcf72f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGeoMapProvider.html#aaca2eace29b6dc261c32a4eb09fcf72f">styleFileURL</a> () const</td></tr>
 <tr class="memdesc:aaca2eace29b6dc261c32a4eb09fcf72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter function for the property with the same name.  <a href="#aaca2eace29b6dc261c32a4eb09fcf72f">More...</a><br /></td></tr>
 <tr class="separator:aaca2eace29b6dc261c32a4eb09fcf72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,6 +166,7 @@ Properties</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">manager</td><td>Pointer to a <a class="el" href="classMapManager.html" title="Manages the list of geographic maps. ">MapManager</a> whose files will be served. The manager shall exist for the lifetime of this object.</td></tr>
     <tr><td class="paramname">settings</td><td><a class="el" href="classGlobalSettings.html" title="Global Settings Manager. ">GlobalSettings</a> object where settings are stored. The settings shall exist for the lifetime of this object.</td></tr>
+    <tr><td class="paramname">librarian</td><td>Global <a class="el" href="classLibrarian.html" title="Manage libraries of flight routes and text assets. ">Librarian</a> object. The librarian shall exist for the lifetime of this object.</td></tr>
     <tr><td class="paramname">parent</td><td>The standard QObject parent </td></tr>
   </table>
   </dd>
@@ -264,6 +267,32 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="afdf6ec5ccb7b474c43202d460ca9749b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf6ec5ccb7b474c43202d460ca9749b">&#9670;&nbsp;</a></span>findByID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Q_INVOKABLE QObject* GeoMapProvider::findByID </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find a waypoint by its ICAO code</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>ICAO code of the waypoint, such as "EDDF" for Frankfurt</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a nullpointer if no waypoint has been found, or else a pointer to the waypoint For better cooperation with QML is not a pointer of type Waypoint*, but ratherof type QObject*. The object is owned by this class and must not be deleted. </dd></dl>
+
+</div>
+</div>
 <a id="a828b9afaa4360583d65f74b24002e9a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a828b9afaa4360583d65f74b24002e9a8">&#9670;&nbsp;</a></span>geoJSON()</h2>
 
@@ -290,33 +319,44 @@ Properties</h2></td></tr>
 <p>Getter function for the property with the same name. </p>
 <dl class="section return"><dt>Returns</dt><dd>Property geoJSON </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00122">122</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00125">125</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
 
 </div>
 </div>
-<a id="ac45f7be4198da5b11fa9969b5d2d1761"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac45f7be4198da5b11fa9969b5d2d1761">&#9670;&nbsp;</a></span>nearbyAirfields()</h2>
+<a id="af54d22d70f030df426b398091a851297"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af54d22d70f030df426b398091a851297">&#9670;&nbsp;</a></span>nearbyWaypoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Q_INVOKABLE QList&lt;QObject*&gt; GeoMapProvider::nearbyAirfields </td>
+          <td class="memname">Q_INVOKABLE QList&lt;QObject*&gt; GeoMapProvider::nearbyWaypoints </td>
           <td>(</td>
           <td class="paramtype">const QGeoCoordinate &amp;&#160;</td>
-          <td class="paramname"><em>position</em></td><td>)</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>List of nearby airfields</p>
+<p>List of nearby waypoints</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">position</td><td>Position near which airfields are searched for</td></tr>
+    <tr><td class="paramname">position</td><td>Position near which waypoints are searched for </td></tr>
+    <tr><td class="paramname">type</td><td>Type of waypoints (AD, NAV, WP)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a list of the 20 airfields that are closest to the given position; the list may however be empty or contain fewer than 20 items. For better cooperation with QML the list does not contain elements of type Waypoint*, but elements of type QObject* </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a list of the 20 waypoints of requested type that are closest to the given position; the list may however be empty or contain fewer than 20 items. For better cooperation with QML the list does not contain elements of type Waypoint*, but elements of type QObject* </dd></dl>
 
 </div>
 </div>
@@ -366,7 +406,7 @@ Properties</h2></td></tr>
 <p>Waypoints. </p>
 <dl class="section return"><dt>Returns</dt><dd>a list of all waypoints known to this <a class="el" href="classGeoMapProvider.html" title="Serves GeoMaps, as MBTiles via an embedded HTTP server, and as GeoJSON. ">GeoMapProvider</a> (that is, the union of all waypoints in any of the installed maps) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00160">160</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00176">176</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
 
 </div>
 </div>
@@ -394,7 +434,7 @@ Properties</h2></td></tr>
 <p>Union of all aviation maps in GeoJSON format. </p>
 <p>This property holds all installed aviation maps in GeoJSON format, combined into one GeoJSON document. </p>
 
-<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00116">116</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00119">119</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
 
 </div>
 </div>
@@ -421,7 +461,7 @@ Properties</h2></td></tr>
 <p>URL where a style file for the base map can be retrieved. </p>
 <p>This property holds a URL where a mapbox style file for the base map can be retrieved. The style file is adjusted, so that its source element points to the local <a class="el" href="classTileServer.html" title="HTTP server for mapbox&#39; MBTiles files. ">TileServer</a> URL where the base map is served. Whenever the base map changes (e.g. because new maps have been downloaded or removed), the style file is deleted, a new style file is generated and a notification signal is emitted. </p>
 
-<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00147">147</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="GeoMapProvider_8h_source.html#l00163">163</a> of file <a class="el" href="GeoMapProvider_8h_source.html">GeoMapProvider.h</a>.</p>
 
 </div>
 </div>
